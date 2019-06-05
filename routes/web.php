@@ -49,3 +49,27 @@ Route::get('/store',function(){
 Route::post('/store',function(Illuminate\Http\Request $request){
     return $request->all() ;
 });
+
+Route::get('/add-task',function(){
+    return view('form-add-task');
+});
+
+Route::post('/insert',function(Illuminate\Http\Request $request){
+    // $task=$request->all();
+    // return $task->input('type');
+    $task = new \App\Task();
+    // $task->save();
+    $task->type = $request->input('type');
+    $task->name = $request->input('name');
+    $task->detail = $request->input('detail');
+    $task->completed = "0";
+    $task->save(); 
+    // return view('form-show-data');
+
+    //   $user= new User();
+    //     $user->username= $request['username'];
+    //     $user->company= $request['company'];
+    // // add other fields
+    // $user->save();
+
+});
