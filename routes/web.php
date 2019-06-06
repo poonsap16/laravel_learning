@@ -73,3 +73,8 @@ Route::post('/insert',function(Illuminate\Http\Request $request){
     // $user->save();
 
 });
+
+Route::get('/list-data',function(Illuminate\Http\Request $tasks){
+    $tasks = \App\Task::all();
+    return view('form-list-data',compact('tasks'));
+});
